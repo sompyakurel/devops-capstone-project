@@ -1,5 +1,8 @@
 # devops-capstone-project
 
+![Build Status](https://github.com/sompyakurel/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
+
+
 This project involves developing a customer account microservice for an e-commerce website. The service provides a REST API to create, read, update, delete, and list customer accounts, utilizing a Python Flask-based backend and a PostgreSQL database.
 This repository contains the starter code for the project in [**IBM-CD0285EN-SkillsNetwork DevOps Capstone Project**](https://www.coursera.org/learn/devops-capstone-project?specialization=devops-and-software-engineering) which is part of the [**IBM DevOps and Software Engineering Professional Certificate**](https://www.coursera.org/professional-certificates/devops-and-software-engineering)
 
