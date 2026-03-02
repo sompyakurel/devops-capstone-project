@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.config.from_object(config)
 
 # Initialize Talisman for Security Headers
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 talisman = Talisman(app)
 
 # Import the routes After the Flask app is created
