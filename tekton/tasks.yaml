@@ -50,3 +50,36 @@ spec:
           rm -rf "${WORKSPACE_SOURCE_PATH}"/..?*
         fi
 
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: nolint
+spec:
+  workspaces:
+    - name: source
+  steps:
+    - name: flake8
+      image: python:3.9-slim
+      workingDir: $(workspaces.source.path)
+      command: ["/bin/bash", "-c"]
+      args: ["pip install flake8 && flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics"]
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: nose
+spec:
+  workspaces:
+    - name: source
+  params:
+    - name: ARGS
+      description: Arguments to pass to nosetests
+      type: string
+      default: "-v"
+  steps:
+    - name: nosetests
+      image: python:3.9-slim
+      workingDir: $(workspaces.source.path)
+      command: ["/bin/bash", "-c"]
+      args: ["pip install nose rednose && nosetests $(params.ARGS) || true"]
